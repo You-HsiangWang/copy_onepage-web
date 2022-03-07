@@ -1,0 +1,409 @@
+*{
+    /* outline: 1px solid red; */
+    box-sizing: border-box;
+}
+
+:root{
+    --maincolor: rgb(1, 37, 243);
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+
+}
+
+/* smooth scroll */
+.body_wrap{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* max-width: 1200px; */
+    margin: auto;
+    position: relative;
+    /* 將fixed的定位從視窗改成爸爸
+    当元素祖先的 transform, perspective 或 filter 属性非 none 时，容器由视口改为该祖先。 */
+    filter: opacity(10);
+}
+
+/* nav */
+
+.nav{
+    position: fixed;
+    width: 20%;
+    height: 15%;
+    min-width: 250px;
+    min-height: 50px;
+    top: 0%;
+    right: 0%;
+    background-color: #fff;
+    text-align: center;
+    padding: 0 1%;
+    z-index: 99;
+}
+.nav_wrap{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav_line{
+    width: 1px;
+    height: 1.1rem;
+    background-color: rgba(119, 119, 119, 0.726);
+    vertical-align: middle;
+}
+
+.nav a{
+    text-decoration: none;
+    color: #777;
+    font-weight: 200;
+    font-size: 1.3rem;
+    transition: .5s;
+}
+
+.nav a:hover{
+    color: rgb(1, 37, 243, .7);
+}
+
+.nav a .fa-grip-lines{
+    margin-right: .4rem;
+}
+
+/* herosection */
+.hero-section{
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(1, 37, 243,.2) 50%), url(../img/bg-image-hairstylist.jpg);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.hero-section_wrap{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section_wrap-logo{
+    position: relative;
+    top: 5%;
+    left: 4%;
+    width: 6%;
+    min-width: 50px;
+
+}
+
+.hero-section_scrolldown{
+    display: block;
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+    border: 2px solid var(--maincolor);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 68px;
+    color: var(--maincolor);
+
+/* 問題: 如何在position:absolute的情況下水平 垂直置中元素?
+https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element */
+    /* position: absolute;
+    margin-left: auto; 
+    margin-right: auto;
+    left: 0%;
+    right: 0%;
+    bottom: 5%; */
+
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(
+        -50%, -50%);
+    ;
+}
+
+.hero-section_scrolldown i{
+    width: 100%;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes jump{
+    from{
+        transform: translatey(30%);
+    }
+    to{
+        transform: translatey(-30%);
+    }
+}
+
+.hero-section_h1{
+    width: 480px;
+    height: 80px;
+    font-size: 80px;
+    font-weight: 700;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right:0%;
+    margin: auto;
+}
+.hero-section_handwrite{
+    font-family: 'Comforter', cursive;
+    color: white;
+    font-weight: 100;
+    font-size: 100px;
+    display: block;
+    position: absolute;
+    top: 65%;
+    right: -15%;
+
+}
+
+/* 卡片區 */
+.intro-section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    /* position的應用!非常重要 */
+}
+.intro-section_wrap{
+    width: 100%;
+}
+/* 卡片們 */
+.intro-section_card-wrap{
+    width: 80%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0%;
+}
+.intro-section_card1{
+    width: 32%;
+    padding-left: 1%;
+}
+.intro-section_card2{
+    width: 32%;
+    padding-left: 1%;
+    padding-top: 100px;
+} 
+.intro-section_card3{
+    width: 32%;
+    padding-left: 1%;
+}  
+.intro-section_card-wrap img{
+    display: block;
+    width: 100%;
+}
+.intro-section_card1, .intro-section_card2, .intro-section_card3{
+    filter: saturate(0);
+    transition: .5s;
+}
+.intro-section_card1:hover, .intro-section_card2:hover, .intro-section_card3:hover{
+    filter: none;
+    /* 下了filter會將圖層z軸的順序往上升，需要用z-index控制 */
+}
+/* 標題 */
+.intro-section_title-word{
+    width: 400px;
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    margin-bottom: 40px;
+}
+.superlink{
+    display: inline;
+}
+.superlink:hover .line{
+    width: 80px;
+}
+.line{
+    /* 製作線段的方法超重要!! */
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--maincolor);
+    vertical-align: middle;
+    margin-bottom: 2px;
+    padding-left: 4px;
+    background-clip: content-box;
+    transition: .5s;
+}
+.superlink_a{
+    font-size: 16px;
+    font-weight: 300;
+    text-decoration: none;
+    color: var(--maincolor);
+}
+.intro-section_title-right{
+    float: right;
+}
+.intro-section_title-left{
+    width: 16px;
+    height: 130px;
+    background-color: var(--maincolor);
+    float: left;
+}
+.intro-section_title-wrap{
+    width: 440px;
+    height: 200px;
+    position: absolute;
+    /* 因為在整個intro-section下了 position:relative 所以absolute的依據就變成以他的寬高為主了 */
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 10%;
+    z-index: 1;
+}
+
+/* CONTACT SECTION */
+.contact-section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contact-section p{
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+.contact-section p a{
+    text-decoration: none;
+    color: rgb(1, 37, 243);
+    background-color: #777;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: .5s;
+}
+.contact-section p a:hover{
+    color: rgb(1, 37, 243,.2)
+}
+
+/* FOOTER SEC */
+.footer-section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.footer-section_wrap{
+    width: 100%;
+    height: 65%;
+    background-color: #777;
+    position: absolute;
+    bottom: 0%;
+}
+.footer-section_iframe{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+.footer-section_iframe iframe{
+    width: 100%;
+    height: 100%;
+    filter: opacity(.7);
+}
+.footer-section_form{
+    position: absolute;
+    width: 70%;
+    height: 20%;
+    background-color: rgb(1, 37, 243);
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.footer-section_form-p{
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid rgba(170, 170, 170, 0.507);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2% 5% 2% 5% ;
+    overflow: hidden;
+    
+}
+.footer-section_form p:nth-child(1){
+    color: rgba(255, 255, 255, 0.568);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.footer-section_form p:nth-child(2){
+    color: rgba(255, 255, 255);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.footer-section_form-form{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 20px ;
+    overflow: hidden;
+}
+.footer-section_form-form input{
+    all: unset;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+}
+::placeholder{
+    color: rgba(255, 255, 255, 0.568);
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+}
+
+.footer-section_nav{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow: hidden;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-section_nav a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-section_nav-social a{
+    margin: 0 10px;
+}
